@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jiang.mapper.BookMapper" >
+  <resultMap id="BaseResultMap" type="com.jiang.entity.Book" >
+    <id column="book_code" property="bookCode" jdbcType="VARCHAR" />
+    <result column="book_name" property="bookName" jdbcType="VARCHAR" />
+    <result column="book_author" property="bookAuthor" jdbcType="VARCHAR" />
+    <result column="book_publishing" property="bookPublishing" jdbcType="VARCHAR" />
+    <result column="book_publication_date" property="bookPublicationDate" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    book_code, book_name, book_author, book_publishing, book_publication_date
+  </sql>
+  <!-- 查询所有图书信息 -->
+  <select id="selectAllBook" resultMap="BaseResultMap">
+  	select * from Book
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from book
+    where book_code = #{bookCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from book
+    where book_code = #{bookCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.jiang.entity.Book" >
+    insert into book (book_code, book_name, book_author, 
+      book_publishing, book_publication_date)
+    values (#{bookCode,jdbcType=VARCHAR}, #{bookName,jdbcType=VARCHAR}, #{bookAuthor,jdbcType=VARCHAR}, 
+      #{bookPublishing,jdbcType=VARCHAR}, #{bookPublicationDate,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jiang.entity.Book" >
+    insert into book
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bookCode != null" >
+        book_code,
+      </if>
+      <if test="bookName != null" >
+        book_name,
+      </if>
+      <if test="bookAuthor != null" >
+        book_author,
+      </if>
+      <if test="bookPublishing != null" >
+        book_publishing,
+      </if>
+      <if test="bookPublicationDate != null" >
+        book_publication_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bookCode != null" >
+        #{bookCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bookName != null" >
+        #{bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="bookAuthor != null" >
+        #{bookAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="bookPublishing != null" >
+        #{bookPublishing,jdbcType=VARCHAR},
+      </if>
+      <if test="bookPublicationDate != null" >
+        #{bookPublicationDate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jiang.entity.Book" >
+    update book
+    <set >
+      <if test="bookName != null" >
+        book_name = #{bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="bookAuthor != null" >
+        book_author = #{bookAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="bookPublishing != null" >
+        book_publishing = #{bookPublishing,jdbcType=VARCHAR},
+      </if>
+      <if test="bookPublicationDate != null" >
+        book_publication_date = #{bookPublicationDate,jdbcType=DATE},
+      </if>
+    </set>
+    where book_code = #{bookCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jiang.entity.Book" >
+    update book
+    set book_name = #{bookName,jdbcType=VARCHAR},
+      book_author = #{bookAuthor,jdbcType=VARCHAR},
+      book_publishing = #{bookPublishing,jdbcType=VARCHAR},
+      book_publication_date = #{bookPublicationDate,jdbcType=DATE}
+    where book_code = #{bookCode,jdbcType=VARCHAR}
+  </update>
+</mapper>

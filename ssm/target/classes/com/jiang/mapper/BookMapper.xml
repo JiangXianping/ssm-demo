@@ -11,6 +11,17 @@
   <sql id="Base_Column_List" >
     book_code, book_name, book_author, book_publishing, book_publication_date
   </sql>
+  <!-- 分页查询 -->
+  <select id="selectBookByPage" resultMap="BaseResultMap">
+  	select 
+  	* 
+  	from book 
+  	where book_code = #{bookCode,jdbcType=INTEGER} limit #{startPos},#{pageSize}
+  </select>
+  <!-- 取得总记录数 -->
+  <select id="getBookCount" resultType="int">
+  	select count(*) from book where book_code=#{bookCode,jdbcType=INTEGER};
+  </select>
   <!-- 查询所有图书信息 -->
   <select id="selectAllBook" resultMap="BaseResultMap">
   	select * from Book

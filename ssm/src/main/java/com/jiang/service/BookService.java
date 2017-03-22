@@ -18,4 +18,10 @@ public interface BookService {
 	//根据id查询图书信息
 	public Book selectBookById(int id);
 	
+	/**
+	 * 查询所有图书信息
+	 * @return
+	 */
+	public List<Book> selectAllBook();
+	
 }

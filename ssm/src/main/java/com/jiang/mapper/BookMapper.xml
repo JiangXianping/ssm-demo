@@ -23,6 +23,10 @@
   	select count(*) from book where book_code=#{bookCode,jdbcType=INTEGER};
   </select>
   <!-- 查询所有图书信息 -->
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select * from Book
+  </select>
+  <!-- 查询所有图书信息 -->
   <select id="selectAllBook" resultMap="BaseResultMap">
   	select * from Book
   </select>

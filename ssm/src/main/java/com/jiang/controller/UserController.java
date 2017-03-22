@@ -53,7 +53,7 @@ public class UserController {
 	}
 	
 	//用户登录
-	@RequestMapping(value="/login",method={RequestMethod.POST})
+	@RequestMapping(value="/login",method={RequestMethod.POST,RequestMethod.GET})
 	public String login(User user,HttpSession session){
 		boolean loginType=userService.login(user.getUsername(), user.getPassword());
 

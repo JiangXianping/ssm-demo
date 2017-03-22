@@ -18,7 +18,7 @@ public class BookServiceImpl implements BookService {
 	
 	@Override
 	public List<Book> findAllBook() {
-		return this.bookMapper.selectAllBook();
+		return this.bookMapper.selectAll();
 	}
 	
 	@Override
@@ -36,5 +36,14 @@ public class BookServiceImpl implements BookService {
 	public Book selectBookById(int id) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	/**
+	 * 查询所有图书信息
+	 */
+	@Override
+	public List<Book> selectAllBook() {
+		return bookMapper.selectAll();
+		
 	}
 }

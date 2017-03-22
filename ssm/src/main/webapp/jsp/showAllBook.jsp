@@ -51,7 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <a href="jsp/index.html"><i class="fa fa-th-large"></i> <span class="nav-label">首页</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li ><a href="jsp/index.jsp">首页 v.1</a></li>
-                            <li class="active"><a href="book/findAllBook">所有图书</a></li>
+                            <li class="active"><a href="book/findByPage">所有图书</a></li>
                             <li><a href="dashboard_3.html">首页 v.3</a></li>
                             <li><a href="dashboard_4_1.html">首页 v.4</a></li>
                             <li><a href="dashboard_5.html">首页 v.5 <span class="label label-primary pull-right">NEW</span></a></li>
@@ -191,9 +191,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
          
 	<div>
-	<a href="user/getExcel">导出excel</a>
+	<div align="right">
+		<a href="user/getExcel">
+			<input type="button" value="导出Excel" class="btn btn btn-info btn-xs">
+		</a>
+	</div>
 <form action="book/findAllBook" method="post">
-	<table width="80%" height="80%" align="center">
+	<table class="table table-striped table-bordered table-hover">
+	<caption style="font-size:24px; align=center;">图书列表</caption>
 		<tr style="font-size:14px;">
 			<th>图书编号</th>
 			<th>图书名称</th>
@@ -211,9 +216,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<td>${book.bookAuthor }</td>
 			<td>${book.bookPublishing }</td>
 			<td>${book.bookPublicationDate }</td>
-			<td><button type="button" class="btn btn-mini btn-primary" >  
-     			 <span class="icon icon-pencil"></span>  
-  			 </button>  </td>
+			<td>
+				<a href="">
+					<button type="button" class="btn btn-mini btn-primary" >  
+     					 <span class="icon icon-pencil"></span>  
+  			 		</button>  
+  			 	</a>
+  			 </td>
 			<td><button type="button" class="btn btn-mini btn-danger" id="delete" onclick="deleteBook('${book.bookCode}')">  
      			 <span class="icon icon-remove"></span>  
   			 </button>  
@@ -221,6 +230,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</tr>
 		</c:forEach>
 	</table>
+	<div align="center" style="padding:0px 0px 10px 0px">
+		<a href="book/findByPage?page=${pageInfo.prePage }&rows=${pageInfo.pageSize}">
+		<input type=button class="btn btn-info btn-xs" value="前一页"/>
+		</a> 
+		<a href="book/findByPage?page=${pageInfo.nextPage }&rows=${pageInfo.pageSize}">
+		<input type=button class="btn btn-info btn-xs" value="下一页"/>
+		</a> 
+	</div>
 </form>
 </div>
 </div>

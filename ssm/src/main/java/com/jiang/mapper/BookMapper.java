@@ -21,6 +21,6 @@ public interface BookMapper {
     int updateByPrimaryKey(Book record);
     
     /**查询所有信息*/
-    List<Book> selectAllBook();
+    List<Book> selectAll();
     
 }

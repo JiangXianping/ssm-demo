@@ -58,7 +58,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <a href="index.jsp"><i class="fa fa-th-large"></i> <span class="nav-label">首页</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li class="active"><a href="jsp/index.jsp">首页 v.1</a></li>
-                            <li><a href="book/findAllBook">所有图书</a></li>
+                            <li><a href="book/findByPage">所有图书</a></li>
                             <li><a href="dashboard_3.html">首页 v.3</a></li>
                             <li><a href="dashboard_4_1.html">首页 v.4</a></li>
                             <li><a href="dashboard_5.html">首页 v.5 <span class="label label-primary pull-right">NEW</span></a></li>

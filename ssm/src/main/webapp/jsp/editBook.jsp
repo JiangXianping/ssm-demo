@@ -191,66 +191,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
          
 	<div>
-	<div align="right">
-		<a href="user/getExcel">
-			<input type="button" value="导出Excel" class="btn btn btn-info btn-xs">
+
+	<div style="height:50px;"></div>
+<form action="book/updateBookById" method="post">
+	<div class="form-group" style="margin-left:30px;">
+		<label for="name">图书编号</label>
+		<input type="text" class="form-control" placeholder="${list.bookCode }" name="bookCode" value="${list.bookCode }" readonly="readonly" style="width:300px;">
+		<label for="name">图书名称</label>
+		<input type="text" class="form-control" placeholder="${list.bookName }" name="bookName" value="${list.bookName }" style="width:300px;">
+		<label for="name">图书作者</label>
+		<input type="text" class="form-control" placeholder="${list.bookAuthor }" name="bookAuthor" value="${list.bookAuthor }" style="width:300px;">
+		<label for="name">出版社</label>
+		<input type="text" class="form-control" placeholder="${list.bookPublishing }" name="bookPublishing" value="${list.bookPublishing }" style="width:300px;">
+		<label for="name">出版时间</label>
+		<input type="text" class="form-control" placeholder="${list.bookPublicationDate }" name="bookPublicationDate" value="${list.bookPublicationDate }" style="width:300px;">
+		<input type="submit" value="修改" class="btn btn-primary">
+		<a href="book/findByPage">
+			<input type="button" value="返回" class="btn btn-primary">
 		</a>
 	</div>
-<form action="book/findAllBook" method="post">
-	<table class="table table-striped table-bordered table-hover" >
-	<caption style="font-size:24px; align=center;">图书列表</caption>
-		<tr style="font-size:14px;">
-			<th>图书编号</th>
-			<th>图书名称</th>
-			<th>图书作者</th>
-			<th>出版社</th>
-			<th>出版时间</th>
-			<th>修改</th>
-			<th>删除</th>
-		</tr>
-		
-		<c:forEach items="${list}" var="book">
-		<tr>
-			<td id="bookcode">${book.bookCode }</td>
-			<td>${book.bookName }</td>
-			<td>${book.bookAuthor }</td>
-			<td>${book.bookPublishing }</td>
-			<td>${book.bookPublicationDate }</td>
-			<td><button type="button" class="btn btn-mini btn-primary" id="edit" onclick="editBook('${book.bookCode}')">  
-     			 <span class="icon icon-check"></span>  
-  			 </button>  
-  			 </td>
-			<td><button type="button" class="btn btn-mini btn-danger" id="delete" onclick="deleteBook('${book.bookCode}')">  
-     			 <span class="icon icon-remove"></span>  
-  			 </button>  
-  			 </td>
-		</tr>
-		</c:forEach>
-	</table>
-	<div align="center" style="padding:0px 0px 10px 0px">
-		<a href="book/findByPage?page=${pageInfo.prePage }&rows=${pageInfo.pageSize}">
-		<input type=button class="btn btn-info btn-xs" value="前一页"/>
-		</a> 
-		<a href="book/findByPage?page=${pageInfo.nextPage }&rows=${pageInfo.pageSize}">
-		<input type=button class="btn btn-info btn-xs" value="下一页"/>
-		</a> 
-	</div>
 </form>
-</div>
-</div>
-</div>
-<script type="text/javascript">
-function deleteBook(id){
-	var r = confirm("确定要删除吗？");
-	if(r==true){
-		window.location="book/deleteBookByCode/"+id;
-	}
-}
-function editBook(id){
-		window.location="book/selectBookById/"+id;
 
-}
-</script>  
+</div>
+</div>
+</div>
+
     <!-- Mainly scripts -->
     <script src="js/jquery-2.1.1.js"></script>
     <script src="js/bootstrap.min.js"></script>

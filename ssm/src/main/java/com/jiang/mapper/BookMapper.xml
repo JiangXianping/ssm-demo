@@ -18,10 +18,7 @@
   	from book 
   	where book_code = #{bookCode,jdbcType=INTEGER} limit #{startPos},#{pageSize}
   </select>
-  <!-- 取得总记录数 -->
-  <select id="getBookCount" resultType="int">
-  	select count(*) from book where book_code=#{bookCode,jdbcType=INTEGER};
-  </select>
+
   <!-- 查询所有图书信息 -->
   <select id="selectAll" resultMap="BaseResultMap">
   	select * from Book

@@ -1,5 +1,7 @@
 package com.jiang.entity;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Book {
@@ -45,11 +47,14 @@ public class Book {
         this.bookPublishing = bookPublishing == null ? null : bookPublishing.trim();
     }
 
-    public Date getBookPublicationDate() {
-        return bookPublicationDate;
-    }
+	public String getBookPublicationDate() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		return sdf.format(bookPublicationDate);
+	}
 
-    public void setBookPublicationDate(Date bookPublicationDate) {
-        this.bookPublicationDate = bookPublicationDate;
-    }
+	public void setBookPublicationDate(Date bookPublicationDate) {
+		this.bookPublicationDate = bookPublicationDate;
+	}
+
+
 }

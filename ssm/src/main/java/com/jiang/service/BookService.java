@@ -13,10 +13,10 @@ public interface BookService {
 	public int deleteBook(String id);
 	
 	//更新图书信息
-	public int updateBookByid(Book book);
+	public int updateBookById(Book book);
 	
 	//根据id查询图书信息
-	public Book selectBookById(int id);
+	public Book selectBookById(String id);
 	
 	/**
 	 * 查询所有图书信息

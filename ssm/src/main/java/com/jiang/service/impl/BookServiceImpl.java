@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.google.gson.Gson;
 import com.jiang.entity.Book;
 import com.jiang.mapper.BookMapper;
 import com.jiang.service.BookService;
@@ -27,15 +28,18 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public int updateBookByid(Book book) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int updateBookById(Book book) {
+		return this.bookMapper.updateByPrimaryKeySelective(book);
 	}
-
+	/**
+	 * 根据bookCode查询
+	 * @param id
+	 * @return
+	 */
 	@Override
-	public Book selectBookById(int id) {
+	public Book selectBookById(String id) {
 		// TODO Auto-generated method stub
-		return null;
+		return this.bookMapper.selectByPrimaryKey(id);
 	}
 	
 	/**

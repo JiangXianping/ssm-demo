@@ -197,7 +197,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</a>
 	</div>
 <form action="book/findAllBook" method="post">
-	<table class="table table-striped table-bordered table-hover">
+	<table class="table table-striped table-bordered table-hover" >
 	<caption style="font-size:24px; align=center;">图书列表</caption>
 		<tr style="font-size:14px;">
 			<th>图书编号</th>
@@ -216,12 +216,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<td>${book.bookAuthor }</td>
 			<td>${book.bookPublishing }</td>
 			<td>${book.bookPublicationDate }</td>
-			<td>
-				<a href="">
-					<button type="button" class="btn btn-mini btn-primary" >  
-     					 <span class="icon icon-pencil"></span>  
-  			 		</button>  
-  			 	</a>
+			<td><button type="button" class="btn btn-mini btn-primary" id="edit" onclick="editBook('${book.bookCode}')">  
+     			 <span class="icon icon-check"></span>  
+  			 </button>  
   			 </td>
 			<td><button type="button" class="btn btn-mini btn-danger" id="delete" onclick="deleteBook('${book.bookCode}')">  
      			 <span class="icon icon-remove"></span>  
@@ -248,6 +245,10 @@ function deleteBook(id){
 	if(r==true){
 		window.location="book/deleteBookByCode/"+id;
 	}
+}
+function editBook(id){
+		window.location="book/selectBookById/"+id;
+
 }
 </script>  
     <!-- Mainly scripts -->

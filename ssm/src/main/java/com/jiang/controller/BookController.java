@@ -60,6 +60,8 @@ public class BookController {
 	@RequestMapping("/selectBookById/{bookCode}")
 	public ModelAndView selectBookById(ModelAndView mv,@PathVariable("bookCode") String bookCode){
 		Book book = this.bookService.selectBookById(bookCode);
+		Gson gson = new Gson();
+		System.out.println(gson.toJson(book));
 		mv.addObject("list",book);
 		logger.info(book);
 		mv.setViewName("editBook.jsp");
@@ -85,9 +87,7 @@ public class BookController {
 				){
 		PageHelper.startPage(page,pageSize);
 		List<Book> list = bookService.selectAllBook();
-		logger.info(list);
 		PageInfo<Book> pageInfo = new PageInfo<Book>(list);
-		logger.info(pageInfo);
 		mv.addObject("list",list);
 		mv.addObject("pageInfo",pageInfo);
 		mv.setViewName("showAllBook.jsp");

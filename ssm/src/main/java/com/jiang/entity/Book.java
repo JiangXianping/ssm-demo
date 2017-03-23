@@ -1,8 +1,8 @@
 package com.jiang.entity;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class Book {
     private String bookCode;
@@ -47,11 +47,12 @@ public class Book {
         this.bookPublishing = bookPublishing == null ? null : bookPublishing.trim();
     }
 
-	public String getBookPublicationDate() {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		return sdf.format(bookPublicationDate);
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+	public Date getBookPublicationDate() {	
+		return bookPublicationDate;
 	}
-
+    
+    
 	public void setBookPublicationDate(Date bookPublicationDate) {
 		this.bookPublicationDate = bookPublicationDate;
 	}

@@ -17,14 +17,12 @@ public class DateUtil {
     public static final String DATE_FULL_STR = "yyyy-MM-dd HH:mm:ss";
     public static final String DATE_SMALL_STR = "yyyy-MM-dd";
     public static final String DATE_KEY_STR = "yyMMddHHmmss";
-     //这是我的工具类
     /**
      * 使用预设格式提取字符串日期
      * @param strDate 日期字符串
      * @return
      */
     public static Date parse(String strDate) {
-    	//把日期传进来就行了
         return parse(strDate,DATE_FULL_STR);
     }
      
